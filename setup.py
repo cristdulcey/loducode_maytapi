@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 setup(
   name = 'loducode_maytapi',
   packages = ['loducode_maytapi'], # this must be the same as the name above
