@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 setup(
     name='loducode_maytapi',
     packages=['loducode_maytapi'],  # this must be the same as the name above
-    version='0.1.1',
+    version='0.1.2',
     description='Non official maytapi library python',
     long_description=long_description,
     long_description_content_type="text/markdown",
