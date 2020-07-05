@@ -20,7 +20,6 @@ def send_text(phone: str, text: str):
         'message': text
     }
     req = requests.post(url, data=json.dumps(payload), headers=headers)
-    print(req.text)
     if req.status_code == 200:
         response = req.json()
         success = response.get("success")
@@ -73,9 +72,7 @@ def send_forward(phone: str, chatId: str, msgId: str):
         'type': 'forward',
         'message': f"false_{chatId}_{msgId}",
     }
-    print(payload)
     req = requests.post(url, data=json.dumps(payload), headers=headers)
-    print(req.text)
     if req.status_code == 200:
         response = req.json()
         success = response.get("success")
@@ -146,14 +143,19 @@ def set_webhook(url_server: str):
         'webhook': url_server,
     }
     req = requests.post(url, data=json.dumps(payload), headers=headers)
-    print(req.text)
     if req.status_code == 200:
         response = req.json()
         pid = response.get("pid")
         webhook = response.get("webhook")
         ack_delivery = response.get("ack_delivery")
         phone_limit = response.get("phone_limit")
-        return pid, webhook, ack_delivery, phone_limit
+        response_dict = {
+            "pid":pid,
+            "webhook":webhook,
+            "ack_delivery":ack_delivery,
+            "phone_limit":phone_limit,
+        }
+        return True, response_dict
     else:
         return False, {}
 

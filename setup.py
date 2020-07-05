@@ -10,4 +10,5 @@ setup(
   download_url = 'https://github.com/UnTalDulcey/loducode_maytapi/tarball/0.1',
   keywords = ['maytapi', 'whatsapp', 'loducode'],
   classifiers = [],
+  install_requires=[i.strip() for i in open("requirements.txt").readlines()],
 )
